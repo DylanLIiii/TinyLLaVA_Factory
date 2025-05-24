@@ -4,7 +4,15 @@ IMAGE_PATH=/home/ai/data/llava/dataset/llava/llava_pretrain/images
 FINETUNE_IMAGE_PATH=/home/ai/data/llava/dataset
 
 LLM_VERSION=apple/OpenELM-270M-Instruct
-VT_VERSION=google/siglip-so400m-patch14-384
+# Vision tower options:
+# - Hugging Face path like 'google/siglip-so400m-patch14-384' for CLIP, SigLIP, etc.
+# - For PE (Positional Encoding) vision tower, use "pe:PE_MODEL_NAME",
+#   e.g., "pe:PE-Core-G14-448", "pe:PE-Core-L14-336".
+#   Ensure the corresponding PE model config exists in `tinyllava.model.vision_tower.pe.config.PE_VISION_CONFIG`.
+VT_VERSION=google/siglip-so400m-patch14-384 # vision tower path in huggingface, or "pe:PE_MODEL_NAME"
+# Example for PE:
+# VT_VERSION="pe:PE-Core-L14-336" 
+
 VT_VERSION2=""
 CN_VERSION=mlp2x_gelu
 CONV_VERSION=llama

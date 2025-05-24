@@ -4,7 +4,15 @@ IMAGE_PATH=/home/ai/data/llava/dataset/llava/llava_pretrain/images #pretrain ima
 FINETUNE_IMAGE_PATH=/home/ai/data/llava/dataset #finetune image dir
 
 LLM_VERSION=stabilityai/stablelm-2-zephyr-1_6b # llm path in huggingface
-VT_VERSION=openai/clip-vit-large-patch14-336 #vision tower path in huggingface
+# Vision tower options:
+# - Hugging Face path like 'google/siglip-so400m-patch14-384' for CLIP, SigLIP, etc.
+# - For PE (Positional Encoding) vision tower, use "pe:PE_MODEL_NAME",
+#   e.g., "pe:PE-Core-G14-448", "pe:PE-Core-L14-336".
+#   Ensure the corresponding PE model config exists in `tinyllava.model.vision_tower.pe.config.PE_VISION_CONFIG`.
+VT_VERSION=openai/clip-vit-large-patch14-336 #vision tower path in huggingface, or "pe:PE_MODEL_NAME"
+# Example for PE:
+# VT_VERSION="pe:PE-Core-L14-336" 
+
 VT_VERSION2="" #if you are not using mof vision tower, keep it empty
 CN_VERSION=mlp2x_gelu #connector type, other options are: qformer, resampler, etc
 CONV_VERSION=phi #chat template for stablelm is the same as that for phi
